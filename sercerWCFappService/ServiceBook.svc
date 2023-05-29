@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="sercerWCFappService.ServiceBook" CodeBehind="ServiceBook.svc.cs" %>
