@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,6 +12,19 @@ namespace sercerWCFappService
     // NOTE: In order to launch WCF Test Client for testing this service, please select ServiceBook.svc or ServiceBook.svc.cs at the Solution Explorer and start debugging.
     public class ServiceBook : IServiceBook
     {
+        IRepositoryBook repositoryBook = new RepositoryBook();
+
+        public List<int> GetAllBooksIdsByPhrase(string phrase)
+        {
+            repositoryBook.FindBooksByKeyPhrase(phrase);
+            throw new NotImplementedException();
+        }
+
+        public Book GetBookById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public string HelloWorld()
         {
             return "Hello World";

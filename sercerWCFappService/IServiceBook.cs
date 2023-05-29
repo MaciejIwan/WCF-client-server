@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -19,5 +20,14 @@ namespace sercerWCFappService
 
         [OperationContract]
         int sum(int a, int b);
+
+
+        [OperationContract]
+        List<int> GetAllBooksIdsByPhrase(string phrase);
+
+        [OperationContract]
+        [FaultContract(typeof(NullReferenceException))]
+        Book GetBookById(int id);
+
+        }
     }
-}
