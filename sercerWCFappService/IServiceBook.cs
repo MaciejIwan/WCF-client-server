@@ -6,9 +6,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace sercerWCFappService
+namespace server
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IServiceBook" in both code and config file together.
     [ServiceContract]
     public interface IServiceBook
     {
@@ -20,7 +19,6 @@ namespace sercerWCFappService
 
         [OperationContract]
         int sum(int a, int b);
-
 
         [OperationContract]
         List<int> GetAllBooksIdsByPhrase(string phrase);

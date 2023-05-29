@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace sercerWCFappService
+namespace server
 {
     public interface IRepositoryBook
     {
@@ -21,7 +21,20 @@ namespace sercerWCFappService
 
         public Book GetBookById(int id)
         {
-            return new Book();
+            return new Book
+            {
+                Id = 1,
+                Title = "Title",
+                Authors = new List<Author>
+                {
+                    new Author
+                    {
+                        Name = "FirstName",
+                        Surname = "LastName"
+                    }
+                }
+
+            };
         }
     }
 }

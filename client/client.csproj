@@ -62,9 +62,25 @@
     <None Include="Connected Services\ServiceBookReference\ServiceBook1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceBookReference\ServiceBook2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceBookReference\ServiceBook3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceBookReference\ServiceBook4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Dto.Book.datasource" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dtos\dtos.csproj">
+      <Project>{5B489CFC-7E8B-489E-A97E-CEF3BA5C1541}</Project>
+      <Name>dtos</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceBookReference\" />

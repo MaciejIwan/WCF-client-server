@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace sercerWCFappService
+namespace server
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ServiceBook" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select ServiceBook.svc or ServiceBook.svc.cs at the Solution Explorer and start debugging.
@@ -16,13 +16,12 @@ namespace sercerWCFappService
 
         public List<int> GetAllBooksIdsByPhrase(string phrase)
         {
-            repositoryBook.FindBooksByKeyPhrase(phrase);
-            throw new NotImplementedException();
+            return repositoryBook.FindBooksByKeyPhrase(phrase);
         }
 
         public Book GetBookById(int id)
         {
-            throw new NotImplementedException();
+            return repositoryBook.GetBookById(id);
         }
 
         public string HelloWorld()
