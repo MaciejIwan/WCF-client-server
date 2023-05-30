@@ -22,13 +22,14 @@ namespace client.ServiceBookReference {
         System.Threading.Tasks.Task<string> HelloWorldAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhrase", ReplyAction="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhraseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhraseFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         string[] GetAllBooksIdsByPhrase(string phrase);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhrase", ReplyAction="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhraseResponse")]
         System.Threading.Tasks.Task<string[]> GetAllBooksIdsByPhraseAsync(string phrase);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/GetBookById", ReplyAction="http://tempuri.org/IServiceBook/GetBookByIdResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.NullReferenceException), Action="http://tempuri.org/IServiceBook/GetBookByIdNullReferenceExceptionFault", Name="NullReferenceException", Namespace="http://schemas.datacontract.org/2004/07/System")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IServiceBook/GetBookByIdFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         Dto.Book GetBookById(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/GetBookById", ReplyAction="http://tempuri.org/IServiceBook/GetBookByIdResponse")]

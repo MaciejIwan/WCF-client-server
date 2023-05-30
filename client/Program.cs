@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ServiceModel;
 using System.Text.RegularExpressions;
 using client.ServiceBookReference;
 using Dto;
+using dtos;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace client
@@ -9,8 +11,8 @@ namespace client
     enum Command
     {
         exit,
-        details,
-        list,
+        byid,
+        bytitle,
         invalid,
         help
     }
@@ -49,9 +51,9 @@ namespace client
                 {
                     Console.WriteLine("Invalid argument");
                 }
-                catch (NullReferenceException)
+                catch (FaultException ex)
                 {
-                    Console.WriteLine("Book not found");
+                    Console.WriteLine(ex.Message);
                 }
                 catch
                 {
@@ -91,11 +93,11 @@ namespace client
                 case Command.exit:
                     System.Environment.Exit(0);
                     break;
-                case Command.details:
+                case Command.byid:
                     ExecGetBookDetails(input.Argument);
                     break;
-                case Command.list:
-                    ExecGetBookList(input.Argument);
+                case Command.bytitle:
+                    ExecFindBookByTitle(input.Argument);
                     break;
                 case Command.help:
                     ExecHelp();
@@ -112,14 +114,14 @@ namespace client
             Console.WriteLine();
             Console.WriteLine("Available commands:");
             Console.WriteLine("\"exit\" - exit the program");
-            Console.WriteLine("\"details <bookId>\" - return details about book with given <bookId>. <bookId> is int");
-            Console.WriteLine("\"list <phrase>\" - fetch list of books ids that contain given pgrase in title. <phrase> is string");
+            Console.WriteLine("\"byid <bookId>\" - return details about book with given <bookId>. <bookId> is int");
+            Console.WriteLine("\"bytitle <phrase>\" - fetch list of books ids that contain given pgrase in title. <phrase> is string");
             Console.WriteLine("\"help\" - show informations");
             Console.WriteLine();
             Console.WriteLine();
         }
 
-        private void ExecGetBookList(string phrase)
+        private void ExecFindBookByTitle(string phrase)
         {
             var ids = client.GetAllBooksIdsByPhrase(phrase);
             Console.WriteLine("Books ids:");

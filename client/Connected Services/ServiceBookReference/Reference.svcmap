@@ -26,6 +26,7 @@
     <MetadataFile FileName="ServiceBook1.xsd" MetadataType="Schema" ID="ecbded7e-fac7-40a4-968b-39989aead923" SourceId="1" SourceUrl="http://localhost:59213/ServiceBook.svc?xsd=xsd2" />
     <MetadataFile FileName="ServiceBook2.xsd" MetadataType="Schema" ID="6482bbb0-1c6c-4b72-bd77-0f93c2284520" SourceId="1" SourceUrl="http://localhost:59213/ServiceBook.svc?xsd=xsd3" />
     <MetadataFile FileName="ServiceBook.wsdl" MetadataType="Wsdl" ID="cb963cd1-2a51-4151-ba26-800d3f8f99d9" SourceId="1" SourceUrl="http://localhost:59213/ServiceBook.svc?wsdl" />
+    <MetadataFile FileName="ServiceBook5.xsd" MetadataType="Schema" ID="f5484c48-663a-41dd-ada9-80641864d761" SourceId="1" SourceUrl="http://localhost:59213/ServiceBook.svc?xsd=xsd5" />
     <MetadataFile FileName="ServiceBook3.xsd" MetadataType="Schema" ID="0c5798c6-a40c-493e-99ad-bd52cec473af" SourceId="1" SourceUrl="http://localhost:59213/ServiceBook.svc?xsd=xsd4" />
     <MetadataFile FileName="ServiceBook.disco" MetadataType="Disco" ID="50eaa7c0-88c1-493d-a3d2-692c8cca4d0d" SourceId="1" SourceUrl="http://localhost:59213/ServiceBook.svc?disco" />
     <MetadataFile FileName="ServiceBook4.xsd" MetadataType="Schema" ID="7e0979ff-4edc-4fa4-9e47-2f2698077b3f" SourceId="1" SourceUrl="http://localhost:59213/ServiceBook.svc?xsd=xsd0" />

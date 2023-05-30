@@ -4,9 +4,10 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:59213/ServiceBook.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:59213/ServiceBook.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:59213/ServiceBook.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
       <xsd:import schemaLocation="http://localhost:59213/ServiceBook.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import schemaLocation="http://localhost:59213/ServiceBook.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
-      <xsd:import schemaLocation="http://localhost:59213/ServiceBook.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Dto" />
+      <xsd:import schemaLocation="http://localhost:59213/ServiceBook.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Dto" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceBook_HelloWorld_InputMessage">
@@ -21,14 +22,17 @@
   <wsdl:message name="IServiceBook_GetAllBooksIdsByPhrase_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllBooksIdsByPhraseResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceBook_GetAllBooksIdsByPhrase_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:FaultException" />
+  </wsdl:message>
   <wsdl:message name="IServiceBook_GetBookById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBookById" />
   </wsdl:message>
   <wsdl:message name="IServiceBook_GetBookById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBookByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceBook_GetBookById_NullReferenceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System" name="detail" element="q1:NullReferenceException" />
+  <wsdl:message name="IServiceBook_GetBookById_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:FaultException" />
   </wsdl:message>
   <wsdl:portType name="IServiceBook">
     <wsdl:operation name="HelloWorld">
@@ -38,11 +42,12 @@
     <wsdl:operation name="GetAllBooksIdsByPhrase">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhrase" message="tns:IServiceBook_GetAllBooksIdsByPhrase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhraseResponse" message="tns:IServiceBook_GetAllBooksIdsByPhrase_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhraseFaultExceptionFault" name="FaultExceptionFault" message="tns:IServiceBook_GetAllBooksIdsByPhrase_FaultExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBookById">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceBook/GetBookById" message="tns:IServiceBook_GetBookById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceBook/GetBookByIdResponse" message="tns:IServiceBook_GetBookById_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IServiceBook/GetBookByIdNullReferenceExceptionFault" name="NullReferenceExceptionFault" message="tns:IServiceBook_GetBookById_NullReferenceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IServiceBook/GetBookByIdFaultExceptionFault" name="FaultExceptionFault" message="tns:IServiceBook_GetBookById_FaultExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceBook" type="tns:IServiceBook">
@@ -64,6 +69,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetBookById">
       <soap:operation soapAction="http://tempuri.org/IServiceBook/GetBookById" style="document" />
@@ -73,8 +81,8 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="NullReferenceExceptionFault">
-        <soap:fault use="literal" name="NullReferenceExceptionFault" namespace="" />
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

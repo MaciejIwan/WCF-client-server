@@ -1,4 +1,5 @@
 ﻿using Dto;
+using dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,11 @@ namespace server
         string HelloWorld();
 
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         List<String> GetAllBooksIdsByPhrase(string phrase);
 
         [OperationContract]
-        [FaultContract(typeof(NullReferenceException))]
+        [FaultContract(typeof(FaultException))]
         Book GetBookById(String id);
 
     }

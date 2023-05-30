@@ -8,6 +8,8 @@ using System.Linq;
 using System;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using System.ServiceModel;
+using dtos;
 
 namespace server
 {
@@ -25,29 +27,52 @@ namespace server
             booksService = new BooksService(new BaseClientService.Initializer
             {
                 ApiKey = apiKey
-            }) ;
+            });
         }
 
 
         public List<String> GetAllBooksIdsByPhrase(string phrase)
-        { 
-            var volumes = booksService.Volumes.List(phrase).Execute().Items;
-            var ids = volumes?.Select(volume => volume.Id).ToList();
-            return ids;
+        {
+            try
+            {
+                var volumes = booksService.Volumes.List(phrase).Execute().Items;
+                var ids = volumes.Select(volume => volume.Id).ToList();
+                return ids;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw new FaultException("No books found");
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException("Service not avaible");
+            }
         }
 
         public Book GetBookById(String id)
         {
-            var volume = booksService.Volumes.Get(id.ToString()).Execute();
-
-            var book = new Book
+            try
             {
-                Id = volume.Id,
-                Title = volume.VolumeInfo.Title,
-                Authors = volume.VolumeInfo.Authors
-            };
+                var volume = booksService.Volumes.Get(id.ToString()).Execute();
 
-            return book;
+                var book = new Book
+                {
+                    Id = volume.Id,
+                    Title = volume.VolumeInfo.Title,
+                    Authors = volume.VolumeInfo.Authors
+                };
+
+                return book;
+            }
+            catch (Google.GoogleApiException ex)
+            {
+                throw new FaultException("Book not found");
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException("Service not avaible");
+            }
+
         }
 
         public string HelloWorld()
