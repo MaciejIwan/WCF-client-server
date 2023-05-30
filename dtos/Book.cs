@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace Dto
 {
-        public struct Book
+    public struct Book
+    {
+        public String Id { get; set; }
+        public String Title { get; set; }
+        public IList<String> Authors { get; set; }
+
+        public override String ToString()
         {
-            public int Id { get; set; }
-            public string Title { get; set; }
-            public List<Author> Authors { get; set; }
-
-            public override string ToString()
+            string authorsString = "";
+            foreach (var author in Authors)
             {
-                string authorsString = "";
-                Authors.ForEach(author => authorsString += (author.ToString() + "\n"));
-                return $"Title: {Title},\nAuthors:\n{authorsString}";
+                authorsString += (author + "\n");
             }
-
+            return $"Title: {Title},\nAuthors:\n{authorsString}";
         }
+
+    }
 }

@@ -1,10 +1,13 @@
 ﻿using Dto;
-using System;
+using Google.Apis.Books.v1;
+using Google.Apis.Services;
+using Google.Apis.Books.v1.Data;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+
+using System;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace server
 {
@@ -12,16 +15,39 @@ namespace server
     // NOTE: In order to launch WCF Test Client for testing this service, please select ServiceBook.svc or ServiceBook.svc.cs at the Solution Explorer and start debugging.
     public class ServiceBook : IServiceBook
     {
-        IRepositoryBook repositoryBook = new RepositoryBook();
+        private BooksService booksService;
 
-        public List<int> GetAllBooksIdsByPhrase(string phrase)
+        public ServiceBook()
         {
-            return repositoryBook.FindBooksByKeyPhrase(phrase);
+            string credentialsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "credentials.txt");
+            string apiKey = File.ReadAllText(credentialsPath);
+
+            booksService = new BooksService(new BaseClientService.Initializer
+            {
+                ApiKey = apiKey
+            }) ;
         }
 
-        public Book GetBookById(int id)
+
+        public List<String> GetAllBooksIdsByPhrase(string phrase)
+        { 
+            var volumes = booksService.Volumes.List(phrase).Execute().Items;
+            var ids = volumes?.Select(volume => volume.Id).ToList();
+            return ids;
+        }
+
+        public Book GetBookById(String id)
         {
-            return repositoryBook.GetBookById(id);
+            var volume = booksService.Volumes.Get(id.ToString()).Execute();
+
+            var book = new Book
+            {
+                Id = volume.Id,
+                Title = volume.VolumeInfo.Title,
+                Authors = volume.VolumeInfo.Authors
+            };
+
+            return book;
         }
 
         public string HelloWorld()

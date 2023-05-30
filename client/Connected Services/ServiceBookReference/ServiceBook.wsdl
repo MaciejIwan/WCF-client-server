@@ -15,18 +15,6 @@
   <wsdl:message name="IServiceBook_HelloWorld_OutputMessage">
     <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceBook_Hi_InputMessage">
-    <wsdl:part name="parameters" element="tns:Hi" />
-  </wsdl:message>
-  <wsdl:message name="IServiceBook_Hi_OutputMessage">
-    <wsdl:part name="parameters" element="tns:HiResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceBook_sum_InputMessage">
-    <wsdl:part name="parameters" element="tns:sum" />
-  </wsdl:message>
-  <wsdl:message name="IServiceBook_sum_OutputMessage">
-    <wsdl:part name="parameters" element="tns:sumResponse" />
-  </wsdl:message>
   <wsdl:message name="IServiceBook_GetAllBooksIdsByPhrase_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllBooksIdsByPhrase" />
   </wsdl:message>
@@ -47,14 +35,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceBook/HelloWorld" message="tns:IServiceBook_HelloWorld_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceBook/HelloWorldResponse" message="tns:IServiceBook_HelloWorld_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Hi">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceBook/Hi" message="tns:IServiceBook_Hi_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceBook/HiResponse" message="tns:IServiceBook_Hi_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="sum">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceBook/sum" message="tns:IServiceBook_sum_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceBook/sumResponse" message="tns:IServiceBook_sum_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetAllBooksIdsByPhrase">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhrase" message="tns:IServiceBook_GetAllBooksIdsByPhrase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhraseResponse" message="tns:IServiceBook_GetAllBooksIdsByPhrase_OutputMessage" />
@@ -69,24 +49,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
       <soap:operation soapAction="http://tempuri.org/IServiceBook/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Hi">
-      <soap:operation soapAction="http://tempuri.org/IServiceBook/Hi" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="sum">
-      <soap:operation soapAction="http://tempuri.org/IServiceBook/sum" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

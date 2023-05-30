@@ -21,30 +21,18 @@ namespace client.ServiceBookReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/HelloWorld", ReplyAction="http://tempuri.org/IServiceBook/HelloWorldResponse")]
         System.Threading.Tasks.Task<string> HelloWorldAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/Hi", ReplyAction="http://tempuri.org/IServiceBook/HiResponse")]
-        string Hi(string fullname);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/Hi", ReplyAction="http://tempuri.org/IServiceBook/HiResponse")]
-        System.Threading.Tasks.Task<string> HiAsync(string fullname);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/sum", ReplyAction="http://tempuri.org/IServiceBook/sumResponse")]
-        int sum(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/sum", ReplyAction="http://tempuri.org/IServiceBook/sumResponse")]
-        System.Threading.Tasks.Task<int> sumAsync(int a, int b);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhrase", ReplyAction="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhraseResponse")]
+        string[] GetAllBooksIdsByPhrase(string phrase);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhrase", ReplyAction="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhraseResponse")]
-        int[] GetAllBooksIdsByPhrase(string phrase);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhrase", ReplyAction="http://tempuri.org/IServiceBook/GetAllBooksIdsByPhraseResponse")]
-        System.Threading.Tasks.Task<int[]> GetAllBooksIdsByPhraseAsync(string phrase);
+        System.Threading.Tasks.Task<string[]> GetAllBooksIdsByPhraseAsync(string phrase);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/GetBookById", ReplyAction="http://tempuri.org/IServiceBook/GetBookByIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.NullReferenceException), Action="http://tempuri.org/IServiceBook/GetBookByIdNullReferenceExceptionFault", Name="NullReferenceException", Namespace="http://schemas.datacontract.org/2004/07/System")]
-        Dto.Book GetBookById(int id);
+        Dto.Book GetBookById(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBook/GetBookById", ReplyAction="http://tempuri.org/IServiceBook/GetBookByIdResponse")]
-        System.Threading.Tasks.Task<Dto.Book> GetBookByIdAsync(int id);
+        System.Threading.Tasks.Task<Dto.Book> GetBookByIdAsync(string id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -82,35 +70,19 @@ namespace client.ServiceBookReference {
             return base.Channel.HelloWorldAsync();
         }
         
-        public string Hi(string fullname) {
-            return base.Channel.Hi(fullname);
-        }
-        
-        public System.Threading.Tasks.Task<string> HiAsync(string fullname) {
-            return base.Channel.HiAsync(fullname);
-        }
-        
-        public int sum(int a, int b) {
-            return base.Channel.sum(a, b);
-        }
-        
-        public System.Threading.Tasks.Task<int> sumAsync(int a, int b) {
-            return base.Channel.sumAsync(a, b);
-        }
-        
-        public int[] GetAllBooksIdsByPhrase(string phrase) {
+        public string[] GetAllBooksIdsByPhrase(string phrase) {
             return base.Channel.GetAllBooksIdsByPhrase(phrase);
         }
         
-        public System.Threading.Tasks.Task<int[]> GetAllBooksIdsByPhraseAsync(string phrase) {
+        public System.Threading.Tasks.Task<string[]> GetAllBooksIdsByPhraseAsync(string phrase) {
             return base.Channel.GetAllBooksIdsByPhraseAsync(phrase);
         }
         
-        public Dto.Book GetBookById(int id) {
+        public Dto.Book GetBookById(string id) {
             return base.Channel.GetBookById(id);
         }
         
-        public System.Threading.Tasks.Task<Dto.Book> GetBookByIdAsync(int id) {
+        public System.Threading.Tasks.Task<Dto.Book> GetBookByIdAsync(string id) {
             return base.Channel.GetBookByIdAsync(id);
         }
     }

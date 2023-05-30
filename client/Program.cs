@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using client.ServiceBookReference;
 using Dto;
 using static System.Net.Mime.MediaTypeNames;
@@ -137,8 +132,7 @@ namespace client
 
         private void ExecGetBookDetails(string argument)
         {
-            int id = int.Parse(argument);
-            var book = client.GetBookById(id);
+            var book = client.GetBookById(argument);
             Console.WriteLine(book);
         }
     }

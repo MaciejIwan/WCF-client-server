@@ -15,11 +15,11 @@ namespace server
         string HelloWorld();
 
         [OperationContract]
-        List<int> GetAllBooksIdsByPhrase(string phrase);
+        List<String> GetAllBooksIdsByPhrase(string phrase);
 
         [OperationContract]
         [FaultContract(typeof(NullReferenceException))]
-        Book GetBookById(int id);
+        Book GetBookById(String id);
 
         }
     }

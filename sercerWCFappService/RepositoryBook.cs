@@ -16,22 +16,18 @@ namespace server
     {
         public List<int> FindBooksByKeyPhrase(string phrase)
         {
-            return new List<int> { 0,1 };
+            return new List<int> { 0, 1 };
         }
 
         public Book GetBookById(int id)
         {
             return new Book
             {
-                Id = 1,
+                Id = "1",
                 Title = "Title",
-                Authors = new List<Author>
+                Authors = new List<String>
                 {
-                    new Author
-                    {
-                        Name = "FirstName",
-                        Surname = "LastName"
-                    }
+                        "FirstName"
                 }
 
             };
