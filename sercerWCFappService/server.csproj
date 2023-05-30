@@ -174,7 +174,6 @@
   <ItemGroup>
     <Compile Include="IServiceBook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryBook.cs" />
     <Compile Include="ServiceBook.svc.cs">
       <DependentUpon>ServiceBook.svc</DependentUpon>
     </Compile>

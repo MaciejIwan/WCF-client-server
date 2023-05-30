@@ -21,5 +21,5 @@ namespace server
         [FaultContract(typeof(NullReferenceException))]
         Book GetBookById(String id);
 
-        }
     }
+}
