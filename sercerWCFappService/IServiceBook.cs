@@ -15,12 +15,6 @@ namespace server
         string HelloWorld();
 
         [OperationContract]
-        string Hi(String fullname);
-
-        [OperationContract]
-        int sum(int a, int b);
-
-        [OperationContract]
         List<int> GetAllBooksIdsByPhrase(string phrase);
 
         [OperationContract]

@@ -28,15 +28,5 @@ namespace server
         {
             return "Hello World";
         }
-
-        public string Hi(string fullname)
-        {
-            return "Hi " + fullname;
-        }
-
-        public int sum(int a, int b)
-        {
-            return a + b;
-        }
     }
 }
